@@ -8,7 +8,7 @@ class ServiceDeskAPI(object):
         #self._url = 'https://mercadolibre:GPxK6FEnMWflkw6ik22pevuy@servicedesk.mercadolibre.com/api'
         self._url = 'https://is-support:S9xV2l7IUOVFgVRaIRCo60KO@servicedesk.mercadolibre.com/api'
 
-    def unescapeString(txt):
+    def unescapeString(self, txt):
         p = txt.replace("<br />", "")
         p = p.replace("<p>", "")
         p = p.replace("</p>", "")
@@ -49,7 +49,7 @@ class ServiceDeskAPI(object):
             response = response.json()
             if category == response['category_id']:
                 information = response['description']
-                information = ServiceDeskAPI.unescapeString(information)
+                information = self.unescapeString(information)
 
                 informationTicket.append(ticket)
                 informationTicket.append(information)
